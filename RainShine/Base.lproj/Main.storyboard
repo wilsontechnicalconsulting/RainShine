@@ -70,14 +70,14 @@
                                     <constraint firstItem="jlf-U4-MWb" firstAttribute="leading" secondItem="PT4-7p-yTf" secondAttribute="leading" constant="20" id="jpm-EW-CEh"/>
                                 </constraints>
                             </view>
-                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="RZq-17-ama">
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="75" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="RZq-17-ama">
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <prototypes>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" rowHeight="70" id="IT5-W5-C2n">
-                                        <rect key="frame" x="0.0" y="28" width="375" height="70"/>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="none" indentationWidth="0.0" reuseIdentifier="weatherCell" rowHeight="75" id="IT5-W5-C2n">
+                                        <rect key="frame" x="0.0" y="28" width="375" height="75"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="IT5-W5-C2n" id="mi7-Ao-JEX">
-                                            <frame key="frameInset" width="375" height="70"/>
+                                            <frame key="frameInset" width="375" height="74.5"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="h4S-Z3-lRN">
@@ -164,12 +164,13 @@
                         <outlet property="currentWeatherCondition" destination="RPI-GQ-5BH" id="pUW-L4-avF"/>
                         <outlet property="dateLBL" destination="8LO-eE-VgR" id="otQ-uW-pD1"/>
                         <outlet property="locationLBL" destination="zkA-cf-QSA" id="nu6-EZ-wx0"/>
+                        <outlet property="tableView" destination="RZq-17-ama" id="m4A-3j-Yb1"/>
                         <outlet property="weatherImage" destination="geo-bq-kLj" id="V8x-Wn-Fkn"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="599" y="80"/>
+            <point key="canvasLocation" x="660" y="80.50974512743629"/>
         </scene>
     </scenes>
 </document>

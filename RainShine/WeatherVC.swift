@@ -8,12 +8,13 @@
 
 import UIKit
 
-class WeatherVC: UIViewController {
+class WeatherVC: UIViewController, UITableViewDelegate, UITableViewDataSource {
     @IBOutlet weak var dateLBL: UILabel!
     @IBOutlet weak var currentTempLBL: UILabel!
     @IBOutlet weak var locationLBL: UILabel!
     @IBOutlet weak var weatherImage: UIImageView!
     @IBOutlet weak var currentWeatherCondition: UILabel!
+    @IBOutlet weak var tableView: UITableView!
 
     
     
@@ -21,9 +22,30 @@ class WeatherVC: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        // Do any additional setup after loading the view, typically from a nib.
+        
+        
+    //Adds the data and the delegate to the cells int the tableview
+        tableView.delegate = self
+        tableView.dataSource = self
+        
     }
 
+    //Following functions required for delegate, UITableview
+    //Standard requirement
+    
+    func numberOfSections(in tableView: UITableView) -> Int {
+        return 1
+    }
+    
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return 6
+    }
+    
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let cell = tableView.dequeueReusableCell(withIdentifier: "weatherCell", for: indexPath)
+        
+        return cell
+    }
    
     
 
