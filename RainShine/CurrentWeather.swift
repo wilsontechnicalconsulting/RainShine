@@ -9,6 +9,8 @@
 import UIKit
 import Alamofire
 
+
+
 class CurrentWeather {
      var _cityName: String!
      var _date: String!
@@ -52,14 +54,16 @@ class CurrentWeather {
     func downloadWeatherDetails (completed: DownloadComplete) {
         //AlamoFire download
         let currentWeatherURL = URL(string: CURRENT_WEATHER_URL)!
-        Alamofire.request(.GET, currentWeatherURL).responseJSON { response in
-            let result = response.result
-            print(result)
-            }
-        completed()
+        Alamofire.request(.GET, parameters: [:], currentWeatherURL).responseJSON { response in
+           let result = response.result
+           print(result)
+           completed()
+           }
+        
         
         }
     
     
     
+
 }
