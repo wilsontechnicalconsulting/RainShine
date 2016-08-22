@@ -16,6 +16,7 @@ class WeatherVC: UIViewController, UITableViewDelegate, UITableViewDataSource {
     @IBOutlet weak var currentWeatherCondition: UILabel!
     @IBOutlet weak var tableView: UITableView!
 
+    var currentWeather = CurrentWeather()
     
     
     
@@ -29,6 +30,10 @@ class WeatherVC: UIViewController, UITableViewDelegate, UITableViewDataSource {
     //Adds the data and the delegate to the cells int the tableview
         tableView.delegate = self
         tableView.dataSource = self
+        
+        currentWeather.downloadWeatherDetails {
+            //Build UI
+        }
         
     }
 

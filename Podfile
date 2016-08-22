@@ -6,7 +6,7 @@ use_frameworks!
 target 'RainShine' do
 pod 'Alamofire',
 	:git=> 'https://github.com/Alamofire/Alamofire.git',
-	:commit=> '6775cb13f7329f1184e5737ca226958eaabce271',
+	# :commit=> '6775cb13f7329f1184e5737ca226958eaabce271',
 	:branch=> 'swift3'
   
   
