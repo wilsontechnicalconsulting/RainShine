@@ -23,6 +23,8 @@ class WeatherVC: UIViewController, UITableViewDelegate, UITableViewDataSource {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        print(CURRENT_WEATHER_URL)
+        
         
     //Adds the data and the delegate to the cells int the tableview
         tableView.delegate = self
