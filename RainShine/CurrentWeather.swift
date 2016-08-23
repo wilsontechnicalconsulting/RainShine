@@ -5,15 +5,16 @@
 //  Created by Eric Wilson on 8/22/16.
 //  Copyright © 2016 Eric Wilson. All rights reserved.
 //
-
 import UIKit
 import Alamofire
 
+
+
 class CurrentWeather {
-     var _cityName: String!
-     var _date: String!
-     var _weatherType: String!
-     var _currentTemp: Double!
+    var _cityName: String!
+    var _date: String!
+    var _weatherType: String!
+    var _currentTemp: Double!
     
     var cityName: String {
         if _cityName == nil {
@@ -52,14 +53,40 @@ class CurrentWeather {
     func downloadWeatherDetails (completed: DownloadComplete) {
         //AlamoFire download
         let currentWeatherURL = URL(string: CURRENT_WEATHER_URL)!
-        Alamofire.request(.GET, currentWeatherURL).responseJSON { response in
-            let result = response.result
-            print(result)
-            }
-        completed()
         
+        Alamofire.request(currentWeatherURL, withMethod: .get).responseJSON { response in
+            let result = response.result
+            //print(response)
+            if let dict = result.value as? Dictionary<String, AnyObject> {
+                if let name = dict["name"] as? String {
+                    self._cityName = name.capitalized
+                    print("City Name: \(self._cityName)")
+                }
+                if let weather = dict["weather"] as? [Dictionary<String, AnyObject>] {
+                    if let main = weather[0]["main"] as? String {
+                        self._weatherType = main.capitalized
+                        print("Weather Type \(self._weatherType)")
+                    }
+                    
+                }
+                if let main = dict["main"] as? Dictionary<String, AnyObject> {
+                    if let currentTemp = main["temp"] as? Double {
+                        let kelvinToFahrenheitPreDiv = (currentTemp * (9/5) - 459.67)
+                        let kelvinToFarenheit = Double(round(10 * kelvinToFahrenheitPreDiv/10))
+                        self._currentTemp = kelvinToFarenheit
+                        print("Temp is: \(self._currentTemp)")
+                    }
+                }
+            }
+            
+            
+            
+            completed()
         }
-    
-    
+        
+        
+    }
+   
     
 }
+
