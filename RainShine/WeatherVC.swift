@@ -52,14 +52,19 @@ class WeatherVC: UIViewController, UITableViewDelegate, UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 6
+        return forecasts.count
+    }
+//Configure Table view to accept data from WeatherCell Class
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        if let cell = tableView.dequeueReusableCell(withIdentifier: "weatherCell", for: indexPath) as? WeatherCell {
+            let forecast = forecasts[indexPath.row]
+            cell.conffigureCell(forecast: forecast)
+            return cell
+        } else {
+            return WeatherCell()
     }
     
-    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "weatherCell", for: indexPath)
-        
-        return cell
-        }
+}
     
     func updateMainUI () {
         dateLBL.text = currentWeather.date
@@ -83,7 +88,7 @@ class WeatherVC: UIViewController, UITableViewDelegate, UITableViewDataSource {
                         print(obj)
                         print(CURRENT_FORECAST_WEATHER_URL)
                                 }
-                            
+                            self.tableView.reloadData()
                                     
                             }
                                     

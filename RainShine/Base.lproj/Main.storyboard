@@ -73,7 +73,7 @@
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="75" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="RZq-17-ama">
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <prototypes>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="none" indentationWidth="0.0" reuseIdentifier="weatherCell" rowHeight="75" id="IT5-W5-C2n">
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="none" indentationWidth="0.0" reuseIdentifier="weatherCell" rowHeight="75" id="IT5-W5-C2n" customClass="WeatherCell" customModule="RainShine" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="28" width="375" height="75"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="IT5-W5-C2n" id="mi7-Ao-JEX">
@@ -144,6 +144,13 @@
                                             <constraint firstItem="h4S-Z3-lRN" firstAttribute="centerY" secondItem="IT5-W5-C2n" secondAttribute="centerY" id="8PO-1K-II4"/>
                                             <constraint firstItem="gS7-dT-E1O" firstAttribute="centerY" secondItem="IT5-W5-C2n" secondAttribute="centerY" id="HzA-am-JqH"/>
                                         </constraints>
+                                        <connections>
+                                            <outlet property="dayLBL" destination="Del-Ww-vRd" id="P2o-dK-UwI"/>
+                                            <outlet property="highTemp" destination="oVV-HU-v20" id="X63-eY-qxZ"/>
+                                            <outlet property="lowTemp" destination="fgg-Mb-Mpz" id="Z3K-u1-fH4"/>
+                                            <outlet property="weatherIcon" destination="h4S-Z3-lRN" id="33J-nH-rNV"/>
+                                            <outlet property="weatherType" destination="jST-fv-PWE" id="Nft-X3-hHG"/>
+                                        </connections>
                                     </tableViewCell>
                                 </prototypes>
                             </tableView>
