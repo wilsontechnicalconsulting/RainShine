@@ -16,6 +16,8 @@ class CurrentWeather {
     var _weatherType: String!
     var _currentTemp: Double!
     
+    
+    
     var cityName: String {
         if _cityName == nil {
             _cityName = ""

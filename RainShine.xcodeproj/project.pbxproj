@@ -13,6 +13,7 @@
 		8B6A35D11D67CDC60011FD00 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 8B6A35CF1D67CDC60011FD00 /* Main.storyboard */; };
 		8B6A35D31D67CDC60011FD00 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 8B6A35D21D67CDC60011FD00 /* Assets.xcassets */; };
 		8B6A35D61D67CDC60011FD00 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 8B6A35D41D67CDC60011FD00 /* LaunchScreen.storyboard */; };
+		8BB573BF1D6CB69F005436EE /* Forecast.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8BB573BE1D6CB69F005436EE /* Forecast.swift */; };
 		8BE8AF4A1D6B39C400C942E8 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8BE8AF491D6B39C400C942E8 /* Constants.swift */; };
 		8BE8AF4C1D6B419500C942E8 /* CurrentWeather.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8BE8AF4B1D6B419500C942E8 /* CurrentWeather.swift */; };
 /* End PBXBuildFile section */
@@ -28,6 +29,7 @@
 		8B6A35D21D67CDC60011FD00 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		8B6A35D51D67CDC60011FD00 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		8B6A35D71D67CDC60011FD00 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		8BB573BE1D6CB69F005436EE /* Forecast.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Forecast.swift; sourceTree = "<group>"; };
 		8BE8AF491D6B39C400C942E8 /* Constants.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
 		8BE8AF4B1D6B419500C942E8 /* CurrentWeather.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CurrentWeather.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -90,6 +92,7 @@
 				8B6A35D71D67CDC60011FD00 /* Info.plist */,
 				8BE8AF491D6B39C400C942E8 /* Constants.swift */,
 				8BE8AF4B1D6B419500C942E8 /* CurrentWeather.swift */,
+				8BB573BE1D6CB69F005436EE /* Forecast.swift */,
 			);
 			path = RainShine;
 			sourceTree = "<group>";
@@ -218,6 +221,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				8B6A35CE1D67CDC60011FD00 /* WeatherVC.swift in Sources */,
+				8BB573BF1D6CB69F005436EE /* Forecast.swift in Sources */,
 				8B6A35CC1D67CDC60011FD00 /* AppDelegate.swift in Sources */,
 				8BE8AF4C1D6B419500C942E8 /* CurrentWeather.swift in Sources */,
 				8BE8AF4A1D6B39C400C942E8 /* Constants.swift in Sources */,
