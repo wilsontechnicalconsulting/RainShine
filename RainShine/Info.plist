@@ -37,5 +37,7 @@
 		<key>NSAllowsArbitraryLoads</key>
 		<true/>
 	</dict>
+	<key>NSLocationWhenInUseUsageDescription</key>
+	<string>For accurate weather results, please allow access to your position</string>
 </dict>
 </plist>

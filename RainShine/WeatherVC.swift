@@ -5,17 +5,23 @@
 //  Created by Eric Wilson on 8/19/16.
 //  Copyright © 2016 Eric Wilson. All rights reserved.
 //
-
+import CoreLocation
 import UIKit
 import Alamofire
 
-class WeatherVC: UIViewController, UITableViewDelegate, UITableViewDataSource {
+
+class WeatherVC: UIViewController, UITableViewDelegate, UITableViewDataSource, CLLocationManagerDelegate {
     @IBOutlet weak var dateLBL: UILabel!
     @IBOutlet weak var currentTempLBL: UILabel!
     @IBOutlet weak var locationLBL: UILabel!
     @IBOutlet weak var weatherImage: UIImageView!
     @IBOutlet weak var currentWeatherCondition: UILabel!
     @IBOutlet weak var tableView: UITableView!
+    
+    let locationManager = CLLocationManager()
+    var currentLocation: CLLocation!
+    
+   
 
     var currentWeather = CurrentWeather()
     var forecast: Forecast!
@@ -26,8 +32,13 @@ class WeatherVC: UIViewController, UITableViewDelegate, UITableViewDataSource {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        print(CURRENT_WEATHER_URL)
-        print(CURRENT_FORECAST_WEATHER_URL)
+    //Sets the delegate for the locaiton manager and the accuracy
+ 
+        locationManager.delegate = self
+        locationManager.desiredAccuracy = kCLLocationAccuracyBest
+        locationManager.requestWhenInUseAuthorization()
+        locationManager.startMonitoringSignificantLocationChanges()
+        
         
         
     //Adds the data and the delegate to the cells int the tableview
@@ -37,12 +48,32 @@ class WeatherVC: UIViewController, UITableViewDelegate, UITableViewDataSource {
         
         currentWeather = CurrentWeather()
     
-        currentWeather.downloadWeatherDetails {
-            self.downloadForecastData {
-            self.updateMainUI()
+           }
+    
+    override func viewDidAppear(_ animated: Bool) {
+       super.viewDidAppear(animated)
+        //locationAuthStatus()
+    }
+
+    
+    
+    func locationAuthStatus() {
+        if CLLocationManager.authorizationStatus() == .authorizedWhenInUse {
+            currentLocation = locationManager.location
+            print(currentLocation)
+            Location.sharedInstance.latitude = currentLocation.coordinate.latitude
+            Location.sharedInstance.longitude = currentLocation.coordinate.longitude
+            currentWeather.downloadWeatherDetails {
+                self.downloadForecastData {
+                    self.updateMainUI()
+                }
             }
+        } else {
+            locationManager.requestWhenInUseAuthorization()
+            locationAuthStatus()
         }
     }
+
 
     //Following functions required for delegate, UITableview
     //Standard requirement
@@ -77,8 +108,8 @@ class WeatherVC: UIViewController, UITableViewDelegate, UITableViewDataSource {
     }
     
     func downloadForecastData (completed: DownloadComplete) {
-        let forecastWeatherURL = URL(string: CURRENT_FORECAST_WEATHER_URL)!
-        Alamofire.request(forecastWeatherURL, withMethod: .get) .responseJSON { response in
+        //let forecastWeatherURL = URL(string: CURRENT_FORECAST_WEATHER_URL)!
+        Alamofire.request(CURRENT_FORECAST_WEATHER_URL, withMethod: .get).responseJSON { response in
             let result = response.result //Get the result and ...
             if let dict = result.value as? Dictionary<String, AnyObject> { //Push result into a dictionary
                 if let list = dict["list"] as? [Dictionary<String, AnyObject>] {
@@ -88,6 +119,7 @@ class WeatherVC: UIViewController, UITableViewDelegate, UITableViewDataSource {
                         print(obj)
                         print(CURRENT_FORECAST_WEATHER_URL)
                                 }
+                            self.forecasts.remove(at: 0)
                             self.tableView.reloadData()
                                     
                             }
@@ -98,7 +130,9 @@ class WeatherVC: UIViewController, UITableViewDelegate, UITableViewDataSource {
                     }
          
                 }
-        
+    
+    
+            
 
 
            
